@@ -7,3 +7,9 @@ export interface CustomButtonProps {
     btnType?: 'button' | 'submit';
 
 }
+
+export interface MessageType {
+    message: string;
+    sender: string;
+    timestamp: string;
+}

@@ -1,6 +1,6 @@
 import { Footer, Navbar } from '@/components'
 import './globals.css'
-import Link from 'next/link'
+import { SocketsProvider } from '@/context/socket.context';
 
 
 
@@ -23,10 +23,11 @@ export default function RootLayout({
         
       </head>
       <body className="relative">
-        
+        <SocketsProvider>
         <Navbar />
         {children}
         <Footer/>
+        </SocketsProvider>
         </body>
     </html>
   )

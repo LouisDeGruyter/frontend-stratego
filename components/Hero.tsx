@@ -1,10 +1,14 @@
 "use client";
 import React from "react";
 import {CustomButton} from '@/components';
-import Image from 'next/image'
+import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
-    const handleScroll = () => {
+    const router = useRouter();
+    const handleClickPlay = () => {
+        router.push('/chat')
+
     }
     return(
         <div className="hero">
@@ -18,7 +22,7 @@ const Hero = () => {
                 <CustomButton
                 title="Play Stratego"
                 containerStyles='bg-primary-blue text-white rounded-full mt-10'
-                handleClick={handleScroll}
+                handleClick={handleClickPlay}
                 />
             </div>
             <div className="hero__image-container">
