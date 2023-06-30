@@ -7,7 +7,7 @@ import { Socket } from 'socket.io-client';
 
 export const SocketContext = createContext<{socket: Socket}>({socket: {} as Socket});
 
-export function SocketsProvider({children,}: {children: ReactNode}) {
+export function SocketsProvider({children}: {children: ReactNode}) {
     const [socket, setSocket] = useState<Socket>();
     useEffect(() => {
         const socketIo = io(SOCKET_URL!);

@@ -1,6 +1,7 @@
 import { Footer, Navbar } from '@/components'
 import './globals.css'
 import { SocketsProvider } from '@/context/socket.context';
+import { AuthContextProvider } from '@/context/auth.context';
 
 
 
@@ -23,11 +24,13 @@ export default function RootLayout({
         
       </head>
       <body className="relative">
+        <AuthContextProvider>
         <SocketsProvider>
         <Navbar />
         {children}
         <Footer/>
         </SocketsProvider>
+        </AuthContextProvider>
         </body>
     </html>
   )
