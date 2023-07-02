@@ -3,12 +3,14 @@ import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { SocketContext } from '@/context/socket.context';
 import { CustomButton } from '@/components';
 import {MessageType} from '@/types';
+import useRank from '@/api/rankApi';
 
 export default function chat() {
   const { socket } = useContext(SocketContext);
   const [message, setMessage] = useState('');
   const [messageReceived, setMessageReceived] = useState('');
   const [messages, setMessages] = useState<MessageType[]>([]);
+  const rankApi = useRank();
 
   useEffect(() => {
     if (socket) {
@@ -17,7 +19,13 @@ export default function chat() {
         setMessages((prevMessages: MessageType[]) => [...prevMessages, data]);
       });
     }
+    fetchRank();
   }, [socket]);
+
+  const fetchRank = async () => {
+    const res = await rankApi.getRanks();
+    console.log(res);
+  };
 
   const sendMessage = useCallback(() => {
     socket.emit('message', { message: message });
